@@ -202,13 +202,6 @@ command_benchmark openssl enc -e -aes-256-cbc -pass pass:12345678
 
 printf '\n'
 
-# ioping
-printf 'ioping: seek rate\n    '
-"$ioping_cmd" -DR -w 5 . | tail -n 1
-printf 'ioping: sequential read speed\n    '
-"$ioping_cmd" -DRL -w 5 . | tail -n 2 | head -n 1
-
-printf '\n'
 
 # dd disk test
 printf 'dd: sequential write speed\n'
