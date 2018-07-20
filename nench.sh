@@ -132,15 +132,6 @@ printf '%s\n' '-------------------------------------------------'
 
 printf '\n'
 
-if ! command_exists ioping
-then
-    curl -s --max-time 10 -o ioping.static http://wget.racing/ioping.static
-    chmod +x ioping.static
-    ioping_cmd="./ioping.static"
-else
-    ioping_cmd="ioping"
-fi
-
 # Basic info
 if [ "$(uname)" = "Linux" ]
 then
@@ -251,24 +242,24 @@ then
     printf '    your IPv4:    %s\n' "$(redact_ip "$ipv4")"
     printf '\n'
 
-    printf '    Cachefly CDN:         '
-    download_benchmark -4 http://cachefly.cachefly.net/100mb.test | \
+    printf '    Linode Frankfurt:         '
+    download_benchmark -4 http://speedtest.frankfurt.linode.com/100MB-frankfurt.bin | \
         Bps_to_MiBps
 
-    printf '    Leaseweb (NL):        '
-    download_benchmark -4 http://mirror.nl.leaseweb.net/speedtest/100mb.bin | \
+    printf '    Linode London:        '
+    download_benchmark -4 http://speedtest.london.linode.com/100MB-london.bin | \
         Bps_to_MiBps
 
-    printf '    Softlayer DAL (US):   '
-    download_benchmark -4 http://speedtest.dal01.softlayer.com/downloads/test100.zip | \
+    printf '    Linode Newark:   '
+    download_benchmark -4 http://speedtest.newark.linode.com/100MB-newark.bin | \
         Bps_to_MiBps
 
-    printf '    Online.net (FR):      '
-    download_benchmark -4 http://ping.online.net/100Mo.dat | \
+    printf '    Digitalocean Amsterdam:      '
+    download_benchmark -4 http://speedtest-ams2.digitalocean.com/100mb.test | \
         Bps_to_MiBps
 
-    printf '    OVH BHS (CA):         '
-    download_benchmark -4 http://proof.ovh.ca/files/100Mio.dat | \
+    printf '    Tele2.net:         '
+    download_benchmark -4 http://speedtest.tele2.net/100MB.zip | \
         Bps_to_MiBps
 
 else
@@ -284,20 +275,24 @@ then
     printf '    your IPv6:    %s\n' "$(redact_ip "$ipv6")"
     printf '\n'
 
-    printf '    Leaseweb (NL):        '
-    download_benchmark -6 http://mirror.nl.leaseweb.net/speedtest/100mb.bin | \
+    printf '    Linode Frankfurt:        '
+    download_benchmark -6 http://speedtest.frankfurt.linode.com/100MB-frankfurt.bin | \
         Bps_to_MiBps
 
-    printf '    Softlayer DAL (US):   '
-    download_benchmark -6 http://speedtest.dal01.softlayer.com/downloads/test100.zip | \
+    printf '    Linode London:   '
+    download_benchmark -6 http://speedtest.london.linode.com/100MB-london.bin | \
         Bps_to_MiBps
 
-    printf '    Online.net (FR):      '
-    download_benchmark -6 http://ping6.online.net/100Mo.dat | \
+    printf '    Linode Newark:      '
+    download_benchmark -6 http://speedtest.newark.linode.com/100MB-newark.bin | \
         Bps_to_MiBps
 
-    printf '    OVH BHS (CA):         '
-    download_benchmark -6 http://proof.ovh.ca/files/100Mio.dat | \
+    printf '    Digitalocean Amsterdam:         '
+    download_benchmark -6 http://speedtest-ams2.digitalocean.com/100mb.test | \
+        Bps_to_MiBps
+        
+    printf '    Tele2.net:         '
+    download_benchmark -6 http://speedtest.tele2.net/100MB.zip | \
         Bps_to_MiBps
 
 else
@@ -306,6 +301,4 @@ fi
 
 printf '%s\n' '-------------------------------------------------'
 
-# delete downloaded ioping binary if script has been run straight from a pipe
-# (rather than a downloaded file)
-[ -t 0 ] || rm -f ioping.static
+
