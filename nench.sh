@@ -239,12 +239,12 @@ then
     download_benchmark -4 http://speedtest.frankfurt.linode.com/100MB-frankfurt.bin | \
         Bps_to_MiBps
 
-    printf '    Linode London:        '
-    download_benchmark -4 http://speedtest.london.linode.com/100MB-london.bin | \
+    printf '    Hetzner Nuernberg:        '
+    download_benchmark -4 https://speed.hetzner.de/100MB.bin | \
         Bps_to_MiBps
 
-    printf '    Linode Newark:   '
-    download_benchmark -4 http://speedtest.newark.linode.com/100MB-newark.bin | \
+    printf '    Cachefly CDN:   '
+    download_benchmark -4 http://cachefly.cachefly.net/100mb.test | \
         Bps_to_MiBps
 
     printf '    Digitalocean Amsterdam:      '
@@ -272,12 +272,12 @@ then
     download_benchmark -6 http://speedtest.frankfurt.linode.com/100MB-frankfurt.bin | \
         Bps_to_MiBps
 
-    printf '    Linode London:   '
-    download_benchmark -6 http://speedtest.london.linode.com/100MB-london.bin | \
+    printf '    Hetzner Nuernberg:   '
+    download_benchmark -6 https://speed.hetzner.de/100MB.bin | \
         Bps_to_MiBps
 
-    printf '    Linode Newark:      '
-    download_benchmark -6 http://speedtest.newark.linode.com/100MB-newark.bin | \
+    printf '    Cachefly CDN:      '
+    download_benchmark -6 http://cachefly.cachefly.net/100mb.test | \
         Bps_to_MiBps
 
     printf '    Digitalocean Amsterdam:         '
